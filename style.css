@@ -1,0 +1,109 @@
+body {
+    font-family: 'Inter', sans-serif;
+}
+.section {
+    min-height: 80vh;
+    padding-top: 5rem; /* Account for fixed navbar */
+}
+.nav-link.active {
+    font-weight: bold;
+    color: #1D4ED8; /* blue-700 */
+    border-bottom: 2px solid #1D4ED8;
+}
+.expand-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+.expanded .expand-content {
+    max-height: 1000px; /* Adjust as needed */
+}
+.project-card, .experience-card, .certification-card /* Tambahkan .certification-card jika Anda membuat class baru */ {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover, .experience-card:hover, .certification-card:hover /* Tambahkan .certification-card jika Anda membuat class baru */ {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Styling khusus untuk gambar sertifikat jika diperlukan lebih lanjut */
+/* .certification-card img {
+    border: 1px solid #e5e7eb; /* contoh border
+    max-height: 200px; /* Batas tinggi maksimal jika h-48 dari Tailwind kurang pas
+} */
+
+.skill-category-title {
+    border-bottom: 2px solid #1D4ED8; /* blue-700 */
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* semibold */
+}
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.fade-in {
+    animation: fadeInAnimation 1s ease-in forwards;
+    opacity: 0;
+}
+@keyframes fadeInAnimation {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.nav-item {
+    position: relative;
+    padding-bottom: 4px;
+}
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1D4ED8; /* blue-700 */
+    transition: width 0.3s ease;
+}
+.nav-item:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+.nav-link.active::after { /* Remove default border for active to use custom one */
+    display: none;
+}
+
+/* Loading Overlay Styles */
+#loading-overlay {
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+#loading-overlay.hidden {
+    opacity: 0;
+    transform: translateY(-100%); /* Slide up effect */
+}
+
+/* Tambahkan CSS Modal Sertifikat di SINI */
+/* Sertifikat Modal Styles */
+#certificate-modal.hidden {
+    display: none;
+}
+#certificate-modal {
+    transition: opacity 0.3s ease;
+}
+
+/* Ensure image within modal scales */
+#modal-certificate-img {
+    display: block; /* Remove extra space below image */
+    max-width: 100%;
+    height: auto;
+}
